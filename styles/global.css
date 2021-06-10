@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-background;
+  @apply bg-norx-blue-900;
 }
 
 .container {
