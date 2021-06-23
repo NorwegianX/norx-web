@@ -4,16 +4,14 @@ import Navbar from './navbar';
 
 const Page = ({ children }) => {
   return (
-    <main>
+    <>
       <Head>
         <title>Norwegian X</title>
         <link rel="shortcut icon" href="/norx.ico" type="image/x-icon" />
       </Head>
-      <body>
-        <Navbar></Navbar>
-        {children}
-      </body>
-    </main>
+      <Navbar></Navbar>
+      {children}
+    </>
   );
 };
 
