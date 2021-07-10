@@ -10,6 +10,9 @@ module.exports = {
       fontFamily: {
         poppins: ['poppins'],
       },
+      height: {
+        ['norx-nav']: '3rem',
+      },
       colors: {
         background: pallette.background,
         ['whitesmoke']: 'whitesmoke',
@@ -17,6 +20,7 @@ module.exports = {
         ['norx-blue-100']: '#c9e9ff',
         ['norx-blue-300']: '#59bbff',
         ['norx-blue-500']: '#00869E',
+        ['norx-blue-700']: '#00434F',
       },
     },
   },
