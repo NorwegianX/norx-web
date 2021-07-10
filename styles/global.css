@@ -25,7 +25,7 @@ h4 {
 }
 
 .container {
-  @apply flex flex-col relative items-center justify-center min-h-screen w-11/12 m-auto;
+  @apply flex flex-col relative items-center justify-center w-11/12 m-auto;
 }
 
 @screen sm {
