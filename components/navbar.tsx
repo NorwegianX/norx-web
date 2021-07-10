@@ -79,7 +79,7 @@ const Navbar = () => {
 
   const RouteLinkWrapperClose = () => {
     return (
-      <div className="flex mt-auto">
+      <div className="flex mt-auto md:hidden">
         <button
           className="flex items-center rounded-lg p-4 h-12 bg-norx-blue-300 mb-8 w-full ml-8 mr-8 shadow text-norx-blue-700 font-semibold"
           type="button"
