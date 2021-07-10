@@ -8,10 +8,11 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        roboto: ['Roboto'],
+        poppins: ['poppins'],
       },
       colors: {
         background: pallette.background,
+        ['norx-background']: 'whitesmoke',
         ['norx-gray-400']: '#BDBDBD',
         ['norx-blue-100']: '#57a0df',
         ['norx-blue-300']: '#4980af',
