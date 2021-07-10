@@ -2,14 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+i {
+}
 
 body {
-  @apply bg-norx-blue-900 text-norx-gray-400 font-roboto;
+  @apply bg-whitesmoke text-black font-poppins;
 }
 
 h1 {
-  @apply text-3xl font-bold text-white;
+  @apply text-3xl font-bold text-black;
 }
 
 h2 {
@@ -24,8 +27,12 @@ h4 {
   @apply text-base font-bold;
 }
 
+button {
+  @apply focus:outline-none;
+}
+
 .container {
-  @apply flex flex-col relative items-center justify-center min-h-screen w-11/12 m-auto;
+  @apply flex flex-col relative items-center justify-center w-11/12 m-auto;
 }
 
 @screen sm {
@@ -34,7 +41,7 @@ h4 {
   }
 }
 
-@screen md {
+@screen lg {
   .container {
     @apply w-3/4;
   }

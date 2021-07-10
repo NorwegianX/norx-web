@@ -13,18 +13,18 @@ class MyDocument extends Document {
         <Head>
           <link rel="shortcut icon" href="/norx.ico" type="image/x-icon" />
 
-          <script
-            defer
-            src="https://pro.fontawesome.com/releases/v5.15.3/js/duotone.js"
-            integrity="sha384-rutYU6OuFfIS5MmBE4wrpMhP633bNlRHqn/SFpcetMTKr+rsBxnoTd80mkHI7wum"
+          <link
+            rel="stylesheet"
+            href="https://pro.fontawesome.com/releases/v5.15.3/css/duotone.css"
+            integrity="sha384-nuPd13VLdsw5iBtqelv9tQ6l6+CteSUrmoT5enzHVJodx7WdNUYXNwgVpA7bgsXn"
             crossOrigin="anonymous"
-          ></script>
-          <script
-            defer
-            src="https://pro.fontawesome.com/releases/v5.15.3/js/fontawesome.js"
-            integrity="sha384-hwdDrjZFQbBwoFcHZZ/6e61XHiwY9csS0Wxi8i5jUgTurxmYITntaGLFYCssX7By"
+          />
+          <link
+            rel="stylesheet"
+            href="https://pro.fontawesome.com/releases/v5.15.3/css/fontawesome.css"
+            integrity="sha384-DHjwMcq12OEB4DQ+qulZDDroaXZqm7h9V6AjiP/RuUF8NhxUa8x6UWdv1AeZS+90"
             crossOrigin="anonymous"
-          ></script>
+          />
 
           <script
             dangerouslySetInnerHTML={{
@@ -34,13 +34,6 @@ class MyDocument extends Document {
             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
         })(window,document,'script','dataLayer',${gtag});`,
             }}
-          ></script>
-          <script
-            id="Cookiebot"
-            src="https://consent.cookiebot.com/uc.js"
-            data-cbid="610bdab5-2858-4709-a719-a3cfa9bf1574"
-            data-blockingmode="auto"
-            type="text/javascript"
           ></script>
         </Head>
         <body>
