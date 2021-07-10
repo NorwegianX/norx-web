@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { useState } from 'react';
 import classnames from 'classnames';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -6,8 +7,6 @@ import { motion } from 'framer-motion';
 import resolveConfig from 'tailwindcss/resolveConfig';
 import tailwindConfig from '../tailwind.config.js';
 const tw = resolveConfig(tailwindConfig);
-
-import Container from './container';
 import logo from '../public/images/logo.png';
 
 type Route = {
@@ -17,6 +16,7 @@ type Route = {
 };
 
 const Navbar = () => {
+  const [mobileOpen, setMobileOpen] = useState(false);
   const router = useRouter();
 
   const routes: Route[] = [
@@ -26,38 +26,92 @@ const Navbar = () => {
     { name: 'Contact', icon: 'fa-envelope', path: '/contact' },
   ];
 
-  return (
-    <div className="flex w-full text-base text-white bg-norx-blue-500 h-12">
-      <Container>
-        <div className={classnames('flex w-full justify-center w-full')}>
-          {routes.map((route: Route) => {
-            return (
-              <Link href={route.path} key={route.path}>
-                <a
-                  className={classnames(
-                    'flex cursor-pointer h-full pl-4 pr-4',
-                    router.pathname === route.path ? 'text-norx-blue-100' : ''
-                  )}
-                >
-                  <i
-                    className={classnames(
-                      'flex pr-2 text-2xl items-center fad ',
-                      route.icon
-                    )}
-                  ></i>
-                  <div
-                    className={classnames(
-                      'flex items-center w-full font-semibold'
-                    )}
-                  >
-                    {route.name}
-                  </div>
-                </a>
-              </Link>
-            );
-          })}
+  const activeRoute = routes.find(route => router.pathname === route.path);
+
+  const RouteLink = ({ route }: { route: Route }) => {
+    const iconClass = classnames(
+      'flex pr-2 text-2xl items-center fad w-14 justify-center',
+      route.icon
+    );
+
+    const linkClass = classnames(
+      'flex cursor-pointer h-16 md:h-12 md:h-full pl-4 pr-4',
+      route => (router.pathname === route.path ? 'text-norx-blue-100' : '')
+    );
+
+    return (
+      <Link href={route.path}>
+        <a className={linkClass}>
+          <i className={iconClass}></i>
+          <div className="flex items-center w-full font-semibold">
+            {route.name}
+          </div>
+        </a>
+      </Link>
+    );
+  };
+
+  const MobileHeader = () => {
+    return (
+      <div
+        className={classnames(
+          'flex h-norx-nav bg-norx-blue-500',
+          mobileOpen ? 'hidden' : 'flex md:hidden'
+        )}
+      >
+        <div className="flex items-center ml-4 text-xl">
+          {activeRoute ? activeRoute.name : 'Not found'}
         </div>
-      </Container>
+        <button
+          className="ml-auto w-12"
+          type="button"
+          onClick={() => setMobileOpen(true)}
+        >
+          <i className="fad fa-bars text-2xl"></i>
+        </button>
+      </div>
+    );
+  };
+
+  const MobileSpacer = () => {
+    return <div className="spacer w-14 pr-2"></div>;
+  };
+
+  const RouteLinkWrapperClose = () => {
+    return (
+      <div className="flex mt-auto">
+        <button
+          className="flex items-center rounded-lg p-4 h-12 bg-norx-blue-300 mb-8 w-full ml-8 mr-8 shadow text-norx-blue-700 font-semibold"
+          type="button"
+          onClick={() => setMobileOpen(false)}
+        >
+          Close menu
+          <i className="fad fa-times text-2xl ml-auto"></i>
+        </button>
+      </div>
+    );
+  };
+
+  const RouteLinkWrapper = ({ routes }: { routes: Route[] }) => {
+    return (
+      <div
+        className={classnames(
+          'flex flex-col md:flex-row absolute md:relative w-full justify-start md:justify-center bg-norx-blue-500 z-10 h-screen md:h-norx-nav',
+          mobileOpen ? 'flex' : 'hidden md:flex'
+        )}
+      >
+        {routes.map((route: Route) => {
+          return <RouteLink route={route} key={route.path} />;
+        })}
+        <RouteLinkWrapperClose />
+      </div>
+    );
+  };
+
+  return (
+    <div className="text-base text-white">
+      <MobileHeader />
+      <RouteLinkWrapper routes={routes} />
     </div>
   );
 };
