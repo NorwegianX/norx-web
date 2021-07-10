@@ -18,7 +18,6 @@ type Route = {
 
 const Navbar = () => {
   const router = useRouter();
-  const isHomepage = router.pathname === '/' ? true : false;
 
   const routes: Route[] = [
     { name: 'About me', icon: 'fa-user-circle', path: '/about' },
@@ -27,91 +26,39 @@ const Navbar = () => {
     { name: 'Contact', icon: 'fa-envelope', path: '/contact' },
   ];
 
-  const navButtonText = {
-    homePage: {},
-    offPage: {
-      marginLeft: '.5rem',
-      marginRight: '2rem',
-    },
-  };
-  const navButtonIcon = {
-    homePage: {},
-    offPage: {
-      fontSize: '1.6rem',
-    },
-  };
-  const navButtonLink = {
-    homePage: {},
-    offPage: {
-      height: '2rem',
-    },
-  };
-
-  const navContainer = {
-    homePage: {},
-    offPage: {
-      fontSize: '1.05rem',
-      background: '#00869E',
-      color: 'white',
-    },
-  };
-
-  const initial = isHomepage ? 'homePage' : 'offPage';
-
   return (
-    <motion.div
-      initial={initial}
-      animate={initial}
-      variants={navContainer}
-      className="flex w-full"
-    >
+    <div className="flex w-full text-base text-white bg-norx-blue-500 h-12">
       <Container>
-        {isHomepage ? (
-          <div className={classnames('relative w-full h-96')}>
-            <Image src={logo} className="object-contain" layout="fill" />
-          </div>
-        ) : (
-          <></>
-        )}
-
-        <div
-          className={classnames(
-            'flex w-full justify-center w-full',
-            isHomepage ? 'mt-16' : 'mt-4 mb-4'
-          )}
-        >
+        <div className={classnames('flex w-full justify-center w-full')}>
           {routes.map((route: Route) => {
             return (
               <Link href={route.path} key={route.path}>
-                <motion.a
-                  className={classnames('flex cursor-pointer')}
-                  initial={initial}
-                  animate={initial}
-                  variants={navButtonLink}
+                <a
+                  className={classnames(
+                    'flex cursor-pointer h-full pl-4 pr-4',
+                    router.pathname === route.path ? 'text-norx-blue-100' : ''
+                  )}
                 >
-                  <motion.i
-                    className={classnames('flex items-center fad ', route.icon)}
-                    initial={initial}
-                    animate={initial}
-                    variants={navButtonIcon}
-                  ></motion.i>
-                  <motion.div
+                  <i
+                    className={classnames(
+                      'flex pr-2 text-2xl items-center fad ',
+                      route.icon
+                    )}
+                  ></i>
+                  <div
                     className={classnames(
                       'flex items-center w-full font-semibold'
                     )}
-                    initial={initial}
-                    animate={initial}
-                    variants={navButtonText}
                   >
                     {route.name}
-                  </motion.div>
-                </motion.a>
+                  </div>
+                </a>
               </Link>
             );
           })}
         </div>
       </Container>
-    </motion.div>
+    </div>
   );
 };
 

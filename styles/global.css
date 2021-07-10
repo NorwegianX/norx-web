@@ -8,7 +8,7 @@ i {
 }
 
 body {
-  @apply bg-norx-background text-black font-poppins;
+  @apply bg-whitesmoke text-black font-poppins;
 }
 
 h1 {
