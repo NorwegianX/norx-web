@@ -35,13 +35,6 @@ class MyDocument extends Document {
         })(window,document,'script','dataLayer',${gtag});`,
             }}
           ></script>
-          <script
-            id="Cookiebot"
-            src="https://consent.cookiebot.com/uc.js"
-            data-cbid="610bdab5-2858-4709-a719-a3cfa9bf1574"
-            data-blockingmode="auto"
-            type="text/javascript"
-          ></script>
         </Head>
         <body>
           <noscript
