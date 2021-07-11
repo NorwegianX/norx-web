@@ -1,5 +1,4 @@
-import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import classnames from 'classnames';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -18,6 +17,15 @@ type Route = {
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const router = useRouter();
+  useEffect(() => {
+    const handleRouteChange = (url, { shallow }) => {
+      setMobileOpen(false);
+    };
+    router.events.on('routeChangeStart', handleRouteChange);
+    return () => {
+      router.events.off('routeChangeStart', handleRouteChange);
+    };
+  });
 
   const routes: Route[] = [
     { name: 'About me', icon: 'fa-user-circle', path: '/about' },
