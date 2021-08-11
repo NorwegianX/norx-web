@@ -43,8 +43,8 @@ const Navbar = () => {
     );
 
     const linkClass = classnames(
-      'flex cursor-pointer h-16 md:h-12 md:h-full pl-4 pr-4',
-      route => (router.pathname === route.path ? 'text-norx-blue-100' : '')
+      'flex cursor-pointer h-16 md:h-12 md:h-full pl-4 pr-4 hover:bg-norx-blue-650 active:bg-norx-blue-600 hover:outline-none',
+      (router.pathname === route.path ? 'text-norx-blue-100' : '')
     );
 
     return (
@@ -63,7 +63,7 @@ const Navbar = () => {
     return (
       <div
         className={classnames(
-          'flex h-norx-nav bg-norx-blue-500',
+          'flex h-norx-nav bg-norx-blue-700',
           mobileOpen ? 'hidden' : 'flex md:hidden'
         )}
       >
@@ -79,10 +79,6 @@ const Navbar = () => {
         </button>
       </div>
     );
-  };
-
-  const MobileSpacer = () => {
-    return <div className="spacer w-14 pr-2"></div>;
   };
 
   const RouteLinkWrapperClose = () => {
@@ -104,12 +100,12 @@ const Navbar = () => {
     return (
       <div
         className={classnames(
-          'flex flex-col md:flex-row absolute md:relative w-full justify-start md:justify-center bg-norx-blue-500 z-10 h-screen md:h-norx-nav',
+          'flex flex-col md:flex-row absolute md:relative w-full justify-start md:justify-center bg-norx-blue-700 z-10 h-screen md:h-norx-nav',
           mobileOpen ? 'flex' : 'hidden md:flex'
         )}
       >
         {routes.map((route: Route) => {
-          return <RouteLink route={route} key={route.path} />;
+          return <RouteLink route={route} key={route.path}  />;
         })}
         <RouteLinkWrapperClose />
       </div>
